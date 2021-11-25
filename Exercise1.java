@@ -15,21 +15,48 @@ class Exercise1{
 	System.out.print("Enter num for Pos/Neg check: ");
 	int num3 = sc.nextInt();
 	String posnegcheck =posNegCheck(num3);
-	System.out.print(posnegcheck);
+	System.out.println(posnegcheck);
 	System.out.print("Enter num for unit place check: ");
-	String num4 = Integer.toString(sc.nextInt());
-	String unit4num = unitNum(num4);
-	System.out.print(unit4num);
-	System.out.print(unit4num.getClass());
-	System.out.println(unit4num);
+	StringBuilder num4 = new StringBuilder(sc.next());
+	System.out.println(num4.getClass());
+	//System.out.println(num4.length());
+	String unitNum4 = unitNum(num4);
+	System.out.println(unitNum4);
+	String digitcheck = digitCheck(num4);
+	System.out.println(digitcheck);
+	int num5 = Integer.parseInt(num4.toString());
+	//System.out.println(num5);
+	String oddevencheck = oddEven(num5);
+	System.out.println(oddevencheck);
+	System.out.println("All done");
+	System.out.println(maxOfnums(num1, num2, num3) + " is greater");
+	System.out.println(minOfnums(num1, num2, num3) + " is smaller");
 
     }
 
-    public static String unitNum(String str){
-	if (str[str.length()-1] == '4')
-	    return str + " has 4 in unit place";
+
+    public static int maxOfnums(int num1, int num2, int num3){
+		int check = Math.max(num1, num2);
+		return Math.max(check, num3);
+    }
+    public static int minOfnums(int num1, int num2, int num3){
+		int check = Math.min(num1, num2);
+		return Math.min(check, num3);
+    }
+
+    public static String oddEven(int num){
+	return (num % 2 == 0)? num +" is Even Num" : num +" is Odd Num";
+    }
+
+    public static String digitCheck(StringBuilder str){
+	return str +" has " + str.length() + " digits.";
+    }
+
+    public static String unitNum(StringBuilder str){
+	if(str.charAt(str.length()-1) == '4')
+	    return str + " has 4 in unit place.";
 	else
-	    return str + " Does have 4 in unit place";
+	    return str + " does not have 4 in unit place.";
     }
 
     public static String posNegCheck(int num){
